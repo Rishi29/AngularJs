@@ -8,25 +8,34 @@
   app.controller('TabController', function(){
     this.tab = 1;
 
-    this.setTab = function(newValue){
-      this.tab = newValue;
+    this.setTab = function(tab){
+      this.tab = tab;
     };
 
-    this.isSet = function(tabName){
-      return this.tab === tabName;
-    };
-  });
-
-  app.controller('GalleryController',function(){
-    this.current=0;
-    
-    this.setCurrent=function(newValue){
-      this.current=newValue||0;
+    this.isSet = function(tab){
+      return (this.tab === tab);
     };
   });
 
-  var gems = [
-    {
+  app.controller('GalleryController', function(){
+    this.current = 0;
+
+    this.setCurrent = function(index){
+      this.current = index;
+    };
+  });
+
+  app.controller('ReviewController', function() {
+    this.review = {};
+
+    this.addReview = function(product) {
+      product.reviews.push(this.review);
+
+      this.review = {};
+    };
+  });
+
+  var gems = [{
       name: 'Azurite',
       description: "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
       shine: 8,
@@ -50,8 +59,7 @@
         author: "tim@example.org",
         createdOn: 1397490980837
       }]
-    },
-    {
+    }, {
       name: 'Bloodstone',
       description: "Origin of the Bloodstone is unknown, hence its low value. It has a very high shine and 12 sides, however.",
       shine: 9,
@@ -75,8 +83,7 @@
         author: "gemsRock@example.org",
         createdOn: 1397490980837
       }]
-    },
-    {
+    }, {
       name: 'Zircon',
       description: "Zircon is our most coveted and sought after gem. You will pay much to be the proud owner of this gorgeous and high shine gem.",
       shine: 70,
@@ -87,7 +94,7 @@
       images: [
         "images/gem-06.gif",
         "images/gem-07.gif",
-        "images/gem-09.gif"
+        "images/gem-08.gif"
       ],
       reviews: [{
         stars: 1,
@@ -105,6 +112,5 @@
         author: "nat@example.org",
         createdOn: 1397490980837
       }]
-    }
-  ];
+    }];
 })();
